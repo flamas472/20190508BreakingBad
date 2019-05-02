@@ -19,3 +19,14 @@ module BreakingBad where
         montoSucio :: Int,
         montoLimpio :: Int
     }deriving (Show)
+
+    consumir :: Meta -> Personaje -> Personaje
+    consumir meta personaje
+     |(aguante personaje < peso meta) = personaje {estado = "durisimo"}
+     |(aguante personaje == peso meta) = personaje {estado = "duro"}
+     |(aguante personaje > peso meta) = personaje {estado = "no tan duro"}
+    
+    lavarDinero :: Dinero -> Dinero
+    lavarDinero dinero = UnDinero 0 ((montoLimpio dinero) + (montoSucio dinero))
+
+    -- prueba branch
